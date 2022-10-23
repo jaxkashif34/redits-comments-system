@@ -92,6 +92,31 @@ app.get('/post/:id', async (req, res) => {
   );
 });
 
+app.post('/posts/:id/comments', async (req, res) => {
+  if (req.body.message === '' || req.body.message === null) {
+    return app.httpErrors.badRequest('Comment is required');
+  }
+  return await commitToDb(
+    prisma.comment
+      .create({
+        data: {
+          message: req.body.message,
+          parentId: req.body.parentId,
+          userId: req.cookies.userId,
+          postId: req.params.id,
+        },
+        select: COMMENT_SELECT_FIELDS,
+      })
+      .then((comment) => {
+        return {
+          ...comment,
+          likeCount: 0,
+          likeByMe: false,
+        };
+      })
+  );
+});
+
 const commitToDb = async (promise) => {
   const [error, data] = await app.to(promise);
   if (error) app.httpErrors.internalServerError(error.message);

@@ -28,7 +28,7 @@ model Comment {
   id        String    @id @default(cuid())
   message   String
   createdAt DateTime  @default(now())
-  updatedAT DateTime  @updatedAt
+  updatedAt DateTime  @updatedAt
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
   post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
