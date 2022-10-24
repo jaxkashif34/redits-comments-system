@@ -12,7 +12,7 @@ app.register(cors, {
   credentials: true,
 });
 app.register(cookies, { secret: process.env.COOKIE_SECRET });
-const userId = async () => (await prisma.user.findFirst({ where: { name: 'Kyle' } })).id;
+const userId = async () => (await prisma.user.findFirst({ where: { name: 'Kashif' } })).id;
 app.addHook('onRequest', (req, res, done) => {
   userId().then((id) => {
     if (req.cookies.userId !== id) {

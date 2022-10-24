@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Full-Stack-Reddit-Comments-Section
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An Amazing Full-Stack Reddit Comments-System where you can perform CRUD operations on Comments and Blogs and you can like a specific comment.
 
-## Available Scripts
+# Features
+- Create a new comment
+- Reply to a comment
+- you can only update a comment if you are the owner of the comment
+- you can only delete a comment if you are the owner of the comment
+- you can like a comment
+- you can unlike a comment
+- you can only like a comment once
+- you can only unlike a comment once
+# Technologies
+## Front End
+- React.js
+- React Context Api
+- React Router Dom for Navigation
+- React Custom Hooks
+## Back End
+- Fastify  
+- Prisma
+- PostgresQL
+- Cors
+- dotenv
+- Prisma Client
 
-In the project directory, you can run:
+# Installation
+ - Both Fron-End and Back-End servers must be running to run the application
 
-### `npm start`
+```bash
+  clone the redits-comments-system
+  cd redits-comments-system
+  npm install or yarn add
+  npm run start (start the front-end server)
+  npm run dev (start the back-end server)
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshots
+<h1>Home Page</h1>
+<img src="./screenshots/allblogs.png" width="900"/>
+<h1>Create Post</h1>
+<img src="./screenshots/createpost.png" width="900"/>
+<h1>Register User</h1>
+<img src="./screenshots/register.png" width="900"/>
+<h1>LogIn Page</h1>
+<img src="./screenshots/signin.png" width="900"/>
+<h1>View Post</h1>
+<img src="./screenshots/viewpost.png" width="900"/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔗 Links
 
-### `npm test`
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kashif-ali-ba8241196/)
+[![GitHub Badge](https://img.shields.io/badge/-jaxkashif34-black?style=flat-square&logo=github&logoColor=white&link=https://github.com/jaxkashif34)](https://github.com/jaxkashif34)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Authors
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@jaxkashif34](https://github.com/jaxkashif34)
