@@ -1,8 +1,13 @@
 import React from 'react';
+import Comment from './comment';
 
 const CommentsList = ({ comments }) => {
   return comments.map((comment) => {
-    return <h5 key={comment.id}>{comment.message}</h5>;
+    return (
+      <div className="comment-stack" key={comment.id}>
+        <Comment {...comment}/>
+      </div>
+    );
   });
 };
 

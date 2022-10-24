@@ -117,6 +117,53 @@ app.post('/posts/:id/comments', async (req, res) => {
   );
 });
 
+app.put('/posts/:postId/comments/:id', async (req, res) => {
+  if (req.body.message === '' || req.body.message === null) {
+    return app.httpErrors.badRequest('update comment is required');
+  }
+
+  const { userId } = await commitToDb(
+    prisma.comment.findUnique({
+      where: { id: req.params.id },
+      select: { userId: true },
+    })
+  );
+
+  if (userId !== req.cookies.userId) {
+    return app.httpErrors.badRequest(`You don't have permission to edit this comment`);
+  }
+
+  return await commitToDb(
+    prisma.comment.update({
+      where: { id: req.params.id },
+      data: { message: req.body.message },
+      select: { message: true },
+    })
+  );
+});
+
+app.post('/posts/:postId/comments/:commentId/toggleLike', async (req, res) => {
+  const data = {
+    userId: req.cookies.userId,
+    commentId: req.params.commentId,
+  };
+
+  const like = await commitToDb(
+    prisma.like.findUnique({
+      where: { userId_commentId: data },
+    })
+  );
+
+  if (like == null) {
+    return await commitToDb(prisma.like.create({ data })).then((result) => {
+      return { addLike: true };
+    });
+  } else {
+    return await commitToDb(prisma.like.delete({ where: { userId_commentId: data } })).then((result) => {
+      return { addLike: false };
+    });
+  }
+});
 const commitToDb = async (promise) => {
   const [error, data] = await app.to(promise);
   if (error) app.httpErrors.internalServerError(error.message);

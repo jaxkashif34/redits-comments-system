@@ -20,6 +20,40 @@ export const PostContext = ({ children }) => {
     return commentByParentId[parentId];
   };
 
+  const createLocalComment = (comment) => {
+    setComments((previousComments) => {
+      return [comment, ...previousComments];
+    });
+  };
+
+  const updateLocalComment = (id, message) => {
+    setComments((previousComments) => {
+      return previousComments.map((comment) => {
+        if (comment.id === id) {
+          return { ...comment, message };
+        } else {
+          return comment;
+        }
+      });
+    });
+  };
+
+  const toggleLocalCommentLike = (id, addLike) => {
+    setComments((previousComments) => {
+      return previousComments.map((comment) => {
+        if (comment.id === id) {
+          if (addLike) {
+            return { ...comment, likeCount: comment.likeCount + 1, likeByMe: true };
+          } else {
+            return { ...comment, likeCount: comment.likeCount - 1, likeByMe: false };
+          }
+        } else {
+          return comment;
+        }
+      });
+    });
+  };
+
   useEffect(() => {
     if (post?.comments == null) return;
     setComments(post?.comments);
@@ -31,6 +65,9 @@ export const PostContext = ({ children }) => {
         post: { id, ...post },
         rootComments: commentByParentId[null],
         getReplies,
+        createLocalComment,
+        updateLocalComment,
+        toggleLocalCommentLike
       }}>
       {loading ? <h1>Loading...</h1> : errors ? <h1 className="error-msg">{errors}</h1> : children}
     </Context.Provider>

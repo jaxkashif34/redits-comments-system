@@ -6,3 +6,14 @@ export const createComment = ({ postId, message, parentId }) => {
     data: { message, parentId },
   });
 };
+export const updateComment = ({ postId, message, id }) => {
+  return makeRequest(`/posts/${postId}/comments/${id}`, {
+    method: 'PUT',
+    data: { message },
+  });
+};
+export const toggleCommentLike = ({ postId, id }) => {
+  return makeRequest(`/posts/${postId}/comments/${id}/toggleLike`, {
+    method: 'POST',
+  });
+};
