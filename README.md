@@ -37,16 +37,7 @@ An Amazing Full-Stack Reddit Comments-System where you can perform CRUD operatio
 ```
 
 ## Screenshots
-<h1>Home Page</h1>
-<img src="./screenshots/allblogs.png" width="900"/>
-<h1>Create Post</h1>
-<img src="./screenshots/createpost.png" width="900"/>
-<h1>Register User</h1>
-<img src="./screenshots/register.png" width="900"/>
-<h1>LogIn Page</h1>
-<img src="./screenshots/signin.png" width="900"/>
-<h1>View Post</h1>
-<img src="./screenshots/viewpost.png" width="900"/>
+<img src="./image.jpeg" width="500" height="800"/>
 
 ## 🔗 Links
 
