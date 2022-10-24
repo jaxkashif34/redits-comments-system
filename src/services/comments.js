@@ -17,3 +17,8 @@ export const toggleCommentLike = ({ postId, id }) => {
     method: 'POST',
   });
 };
+export const deleteComment = ({ postId, id }) => {
+  return makeRequest(`/posts/${postId}/comments/${id}`, {
+    method: 'DELETE',
+  });
+};

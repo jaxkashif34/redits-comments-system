@@ -130,7 +130,7 @@ app.put('/posts/:postId/comments/:id', async (req, res) => {
   );
 
   if (userId !== req.cookies.userId) {
-    return app.httpErrors.badRequest(`You don't have permission to edit this comment`);
+    return app.httpErrors.unauthorized(`You don't have permission to edit this comment`);
   }
 
   return await commitToDb(
@@ -164,6 +164,17 @@ app.post('/posts/:postId/comments/:commentId/toggleLike', async (req, res) => {
     });
   }
 });
+
+app.delete('/posts/:postId/comments/:id', async (req, res) => {
+  const { userId } = await commitToDb(prisma.comment.findUnique({ where: { id: req.params.id }, select: { userId: true } }));
+
+  if (userId !== req.cookies.userId) {
+    return app.badRequest.unauthorized('You are not allowed to delete this comment');
+  }
+
+  return await commitToDb(prisma.comment.delete({ where: { id: req.params.id }, select: { id: true } }));
+});
+
 const commitToDb = async (promise) => {
   const [error, data] = await app.to(promise);
   if (error) app.httpErrors.internalServerError(error.message);

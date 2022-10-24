@@ -54,6 +54,12 @@ export const PostContext = ({ children }) => {
     });
   };
 
+  const deleteLocalComment = (id) => {
+    setComments((previousComments) => {
+      return previousComments.filter((comment) => comment.id !== id);
+    });
+  };
+
   useEffect(() => {
     if (post?.comments == null) return;
     setComments(post?.comments);
@@ -67,7 +73,8 @@ export const PostContext = ({ children }) => {
         getReplies,
         createLocalComment,
         updateLocalComment,
-        toggleLocalCommentLike
+        toggleLocalCommentLike,
+        deleteLocalComment,
       }}>
       {loading ? <h1>Loading...</h1> : errors ? <h1 className="error-msg">{errors}</h1> : children}
     </Context.Provider>
